@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ReadWrite_InternalStorage</string>
+    <string name="textViewInnerCircle">Inner Circle</string>
+    <string name="editTextInput">Input</string>
+    <string name="buttonRead">FILE READ FROM INNER</string>
+    <string name="buttonWrite">FILE WRITE FROM INNER</string>
 </resources>
