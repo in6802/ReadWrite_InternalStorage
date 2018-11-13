@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     fileInputStream.read(buffer);
                     editText.setText(new String(buffer));
-                    fileInputStream.close();
 
                 } catch (FileNotFoundException e) {
                     Log.e("openFileInput", "FileNotFoundException");
@@ -54,8 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (IOException e) {
                     Log.e("buffer fail", "FileNotFoundException");
                     e.printStackTrace();
+                } finally {
+                    try {
+                        fileInputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-
                 break;
 
             case R.id.buttonWrite:
@@ -64,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     fileOutputStream.write(editTextInput.getText().toString().getBytes());
 
                     editTextInput.setText("");
-                    fileOutputStream.close();
 
                 } catch (FileNotFoundException e) {
                     Log.e("openFileOutput", "FileNotFoundException");
@@ -73,15 +76,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (IOException e) {
                     Log.e("openFileOutput.write", "failed");
                     e.printStackTrace();
+                }finally {
+                    try {
+                        fileInputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-
-
                 break;
-
-
-
-
         }
-
     }
 }
